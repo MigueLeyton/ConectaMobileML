@@ -8,15 +8,6 @@
     tools:context=".EditarPerfil"
     android:background="@color/white">
 
-    <!-- Fondo de pantalla -->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/fondo_login"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="80dp" />
-
     <!-- Contenedor principal -->
     <FrameLayout
         android:id="@+id/main"
@@ -27,6 +18,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Fondo de pantalla -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/fondo_login"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="80dp" />
 
         <!-- Título principal -->
         <androidx.appcompat.widget.Toolbar
