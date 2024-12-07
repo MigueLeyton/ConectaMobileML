@@ -10,21 +10,36 @@
     android:padding="16dp"
     android:background="@color/white">
 
+    <!-- Fondo de pantalla -->
+
+    <!-- Toolbar en la parte superior -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/green_background_with_gradient_concept_vector"
-        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/wallpaper2you_436554"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         tools:layout_editor_absoluteX="16dp" />
-    <!-- Imagen de perfil -->
 
-    <!-- Nombre del usuario -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/material_dynamic_primary30"
+        android:minHeight="?attr/actionBarSize"
+        android:title="Perfil"
+        android:titleTextColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <!-- Imagen de perfil -->
     <ImageView
         android:id="@+id/img_profile_picture"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="96dp"
+        android:layout_width="198dp"
+        android:layout_height="204dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/pngegg"
         android:contentDescription="Foto de perfil"
         android:scaleType="centerCrop"
@@ -32,8 +47,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
+    <!-- Nombre del usuario -->
     <TextView
         android:id="@+id/tv_username"
         android:layout_width="wrap_content"
@@ -47,29 +63,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-
     <!-- Botón para ver lista de usuarios -->
-
-    <!-- Botón para chatear -->
     <Button
         android:id="@+id/btn_ver_usuarios"
         android:layout_width="211dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/material_dynamic_primary30"
         android:text="Ver Lista de Contactos"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_username" />
 
+    <!-- Botón para chatear -->
     <Button
         android:id="@+id/btn_chat"
         android:layout_width="211dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:text="Chatear"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/material_dynamic_primary30"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/btn_ver_usuarios"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,19 +96,20 @@
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:text="Editar Perfil"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/material_dynamic_primary30"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/btn_chat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Botón para eliminar perfil -->
     <Button
         android:id="@+id/btn_eliminar_perfil"
         android:layout_width="211dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:text="Eliminar Perfil"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/material_dynamic_primary30"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/btn_editar_perfil"
         app:layout_constraintStart_toStartOf="parent"

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/green_background_with_gradient_concept_vector"
+        android:src="@drawable/fondo"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="16dp" />
 
@@ -47,8 +47,8 @@
 
     <EditText
         android:id="@+id/et_email"
-        android:layout_width="341dp"
-        android:layout_height="50dp"
+        android:layout_width="340dp"
+        android:layout_height="85dp"
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/black"
         android:hint="Correo Electrónico"
@@ -60,14 +60,15 @@
 
     <EditText
         android:id="@+id/et_password"
-        android:layout_width="341dp"
-        android:layout_height="50dp"
+        android:layout_width="340dp"
+        android:layout_height="85dp"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/black"
         android:hint="Contraseña"
         android:inputType="textPassword"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_email" />
 
@@ -75,8 +76,8 @@
         android:id="@+id/btn_login"
         android:layout_width="211dp"
         android:layout_height="48dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/material_dynamic_primary30"
         android:text="Iniciar Sesión"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

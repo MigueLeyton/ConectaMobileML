@@ -8,105 +8,125 @@
     android:padding="16dp"
     tools:context=".Registrar">
 
+    <!-- Fondo de pantalla -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/green_background_with_gradient_concept_vector"
+        android:src="@drawable/fondo_login"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="80dp" />
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:gravity="center"
-        android:text="Registrarse"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+    <!-- Contenedor principal donde se ajustan los márgenes de las barras del sistema -->
+    <FrameLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <EditText
-        android:id="@+id/et_nombre"
-        android:layout_width="341dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/black"
-        android:hint="Nombre"
-        android:inputType="textPersonName"
-        android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+        <!-- Título principal -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/material_dynamic_primary30"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
 
-    <EditText
-        android:id="@+id/et_apellido"
-        android:layout_width="341dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="@color/black"
-        android:hint="Apellido"
-        android:inputType="textPersonName"
-        android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_nombre" />
+        <!-- Barra de título centrado -->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="Registro"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/et_email"
-        android:layout_width="341dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="@color/black"
-        android:hint="Correo Electrónico"
-        android:inputType="textEmailAddress"
-        android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_apellido" />
+        <!-- Campos de entrada -->
 
-    <EditText
-        android:id="@+id/et_password"
-        android:layout_width="341dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="@color/black"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_email" />
+        <EditText
+            android:id="@+id/et_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="75dp"
+            android:backgroundTint="@color/black"
 
+            android:hint="Nombre"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
-    <Button
-        android:id="@+id/btn_Registro"
-        android:layout_width="211dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="@color/black"
-        android:text="Registrarse"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_password" />
+        <EditText
+            android:id="@+id/et_apellido"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="140dp"
+            android:backgroundTint="@color/black"
+            android:hint="Apellido"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_nombre" />
 
-    <TextView
-        android:id="@+id/tv_login_prompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="¿Ya tienes cuenta? Inicia sesión"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_Registro"
-        android:layout_marginTop="16dp"/>
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="200dp"
+            android:backgroundTint="@color/black"
+            android:hint="Correo Electrónico"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_apellido" />
 
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="275dp"
+            android:backgroundTint="@color/black"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_email" />
+
+        <!-- Botón de registro -->
+        <Button
+            android:id="@+id/btn_Registro"
+            android:layout_width="149dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="250dp"
+            android:backgroundTint="@color/material_dynamic_primary30"
+            android:text="Registrar" />
+
+        <!-- Enlace para login -->
+        <TextView
+            android:id="@+id/tv_login_prompt"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginTop="350dp"
+            android:gravity="center"
+            android:text="¿Ya tienes cuenta? Inicia sesión"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_Registro" />
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

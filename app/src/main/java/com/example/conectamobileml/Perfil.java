@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -21,6 +22,7 @@ public class Perfil extends AppCompatActivity {
     private TextView tvUsername;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,14 @@ public class Perfil extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Inicializar y configurar la Toolbar
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar); // Configurar Toolbar como ActionBar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Mostrar el botón de "atrás"
+            getSupportActionBar().setTitle("");
+        }
 
         // Cargar datos del usuario desde Firestore
         loadUserData();

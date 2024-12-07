@@ -2,99 +2,106 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
     tools:context=".EditarPerfil"
     android:background="@color/white">
 
+    <!-- Fondo de pantalla -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/green_background_with_gradient_concept_vector"
+        android:src="@drawable/fondo_login"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="80dp" />
 
-    <!-- Título -->
-
-    <!-- Campo para Nombre -->
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Editar Perfil"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+    <!-- Contenedor principal -->
+    <FrameLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <EditText
-        android:id="@+id/et_nombre"
-        android:layout_width="341dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:hint="Nombre"
-        android:inputType="text"
-        android:backgroundTint="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/tv_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Título principal -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/material_dynamic_primary30"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
 
-    <!-- Campo para Apellido -->
-    <EditText
-        android:id="@+id/et_apellido"
-        android:layout_width="341dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:hint="Apellido"
-        android:inputType="text"
-        android:backgroundTint="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/et_nombre"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Barra de título centrado -->
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="Editar Perfil"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
-    <!-- Campo para Correo -->
-    <EditText
-        android:id="@+id/et_email"
-        android:layout_width="341dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:hint="Correo Electrónico"
-        android:inputType="textEmailAddress"
-        android:backgroundTint="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/et_apellido"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <!-- Campos de entrada -->
 
-    <!-- Campo para Contraseña -->
-    <EditText
-        android:id="@+id/et_password"
-        android:layout_width="341dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:backgroundTint="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/et_email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+            android:id="@+id/et_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_marginTop="75dp"
+            android:backgroundTint="@color/black"
+            android:hint="Nombre"
+            android:inputType="text"
+            android:padding="12dp" />
 
-    <!-- Botón para guardar cambios -->
-    <Button
-        android:id="@+id/btn_guardar_cambios"
-        android:layout_width="211dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="4dp"
-        android:text="Guardar Cambios"
-        android:backgroundTint="@color/black"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/et_password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+            android:id="@+id/et_apellido"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_marginTop="140dp"
+            android:backgroundTint="@color/black"
+            android:hint="Apellido"
+            android:inputType="text"
+            android:padding="12dp" />
 
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="200dp"
+            android:backgroundTint="@color/black"
+            android:hint="Correo Electrónico"
+            android:inputType="textEmailAddress"
+            android:padding="12dp" />
+
+        <!-- Botón de guardar cambios -->
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_marginTop="260dp"
+
+            android:backgroundTint="@color/black"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:padding="12dp" />
+
+        <Button
+            android:id="@+id/btn_guardar_cambios"
+            android:layout_width="177dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="300dp"
+            android:backgroundTint="@color/material_dynamic_primary30"
+            android:text="Guardar Cambios" />
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

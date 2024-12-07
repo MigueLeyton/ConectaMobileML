@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -26,6 +27,7 @@ public class EditarPerfil extends AppCompatActivity {
     private Button btnGuardarCambios;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,14 @@ public class EditarPerfil extends AppCompatActivity {
 
         // Configurar botón de guardar cambios
         btnGuardarCambios.setOnClickListener(v -> guardarCambios());
+
+        // Configurar Toolbar
+        toolbar = findViewById(R.id.toolbar); // Inicializar la Toolbar
+        setSupportActionBar(toolbar); // Configurar la Toolbar como ActionBar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Mostrar el botón de "atrás"
+            getSupportActionBar().setTitle(""); // Eliminar el título de la Toolbar
+        }
     }
 
     private void guardarCambios() {

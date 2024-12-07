@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.auth.User;
@@ -23,6 +25,7 @@ public class Registrar extends AppCompatActivity {
     private TextView tvLoginPrompt;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,14 @@ public class Registrar extends AppCompatActivity {
         etPassword = findViewById(R.id.et_password);
         btnRegistro = findViewById(R.id.btn_Registro);
         tvLoginPrompt = findViewById(R.id.tv_login_prompt);
+
+        // Inicializar y configurar la Toolbar
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar); // Configurar Toolbar como ActionBar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Mostrar el botón de "atrás"
+            getSupportActionBar().setTitle("");
+        }
 
         btnRegistro.setOnClickListener(view -> {
             String nombre = etNombre.getText().toString().trim();
