@@ -3,7 +3,7 @@ package com.example.conectamobileml;
 public class User {
     private String nombre;
     private String apellido;
-    private String correo;
+    private String email;
 
     // Constructor público sin parámetros
     public User() {}
@@ -25,11 +25,11 @@ public class User {
         this.apellido = apellido;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

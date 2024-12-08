@@ -3,6 +3,7 @@ package com.example.conectamobileml;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,7 +24,7 @@ import java.util.Map;
 
 public class EditarPerfil extends AppCompatActivity {
 
-    private EditText etNombre, etApellido, etEmail, etPassword;
+    private EditText etNombre, etApellido, etEmail, etPassword, etConfirmPassword;
     private Button btnGuardarCambios;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
@@ -49,17 +50,18 @@ public class EditarPerfil extends AppCompatActivity {
         etApellido = findViewById(R.id.et_apellido);
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
+        etConfirmPassword = findViewById(R.id.et_confirm_password); // Nuevo campo
         btnGuardarCambios = findViewById(R.id.btn_guardar_cambios);
 
         // Configurar botón de guardar cambios
         btnGuardarCambios.setOnClickListener(v -> guardarCambios());
 
         // Configurar Toolbar
-        toolbar = findViewById(R.id.toolbar); // Inicializar la Toolbar
-        setSupportActionBar(toolbar); // Configurar la Toolbar como ActionBar
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Mostrar el botón de "atrás"
-            getSupportActionBar().setTitle(""); // Eliminar el título de la Toolbar
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("");
         }
     }
 
@@ -68,12 +70,25 @@ public class EditarPerfil extends AppCompatActivity {
         String apellido = etApellido.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
+        String confirmPassword = etConfirmPassword.getText().toString().trim();
 
-        // Validar campos
-        if (TextUtils.isEmpty(nombre) || TextUtils.isEmpty(apellido) ||
-                TextUtils.isEmpty(email)) {
-            Toast.makeText(EditarPerfil.this, "Por favor, completa todos los campos obligatorios", Toast.LENGTH_SHORT).show();
+        // Validar campos obligatorios
+        if (TextUtils.isEmpty(nombre) || TextUtils.isEmpty(apellido) || TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Por favor, completa todos los campos obligatorios", Toast.LENGTH_SHORT).show();
             return;
+        }
+
+        // Validar contraseña
+        if (!TextUtils.isEmpty(password)) {
+            if (!isPasswordValid(password)) {
+                Toast.makeText(this, "La contraseña debe tener al menos 8 caracteres, una letra mayúscula, un número y un carácter especial.", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            if (!password.equals(confirmPassword)) {
+                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
 
         // Obtener usuario actual
@@ -98,9 +113,9 @@ public class EditarPerfil extends AppCompatActivity {
                     if (!email.equals(user.getEmail())) {
                         user.updateEmail(email).addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
-                                Toast.makeText(EditarPerfil.this, "Correo actualizado", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "Correo actualizado", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(EditarPerfil.this, "Error al actualizar correo: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "Error al actualizar correo: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -109,21 +124,34 @@ public class EditarPerfil extends AppCompatActivity {
                     if (!TextUtils.isEmpty(password)) {
                         user.updatePassword(password).addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
-                                Toast.makeText(EditarPerfil.this, "Contraseña actualizada correctamente", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "Contraseña actualizada correctamente", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(EditarPerfil.this, "Error al actualizar contraseña: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "Error al actualizar contraseña: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
 
-                    // Redirigir al Activity Perfil después de guardar
-                    Toast.makeText(EditarPerfil.this, "Datos actualizados correctamente", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(EditarPerfil.this, Perfil.class);
-                    startActivity(intent);
+                    Toast.makeText(this, "Datos actualizados correctamente", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, Perfil.class));
                     finish();
                 })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(EditarPerfil.this, "Error al actualizar datos: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                });
+                .addOnFailureListener(e -> Toast.makeText(this, "Error al actualizar datos: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+    }
+
+    // Método para validar la contraseña
+    private boolean isPasswordValid(String password) {
+        return password.length() >= 8 &&
+                password.matches(".*[A-Z].*") && // Contiene una letra mayúscula
+                password.matches(".*\\d.*") &&  // Contiene un número
+                password.matches(".*[@#$%^&+=].*"); // Contiene un carácter especial
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

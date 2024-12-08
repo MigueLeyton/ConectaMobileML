@@ -31,7 +31,7 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
         User user = userList.get(position);
         holder.tvName.setText(user.getNombre());
         holder.tvLastName.setText(user.getApellido());
-        holder.tvEmail.setText(user.getCorreo());
+        holder.tvEmail.setText(user.getEmail());
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.example.conectamobileml;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -128,5 +129,15 @@ public class Perfil extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     Toast.makeText(Perfil.this, "Error al eliminar datos: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) { // Detectar el clic en el botón de "atrás"
+            Toast.makeText(Perfil.this, "Sesión Cerrada", Toast.LENGTH_SHORT).show();
+            onBackPressed(); // Regresar automáticamente a la actividad anterior
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

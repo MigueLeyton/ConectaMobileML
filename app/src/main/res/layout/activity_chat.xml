@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Chat">
+    android:padding="5dp"
+    android:background="@color/black"
+    tools:context="Chat">
 
 
     <!-- Contenedor principal -->
@@ -19,21 +21,24 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <!-- Fondo de pantalla -->
+
+        <!-- Toolbar -->
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/wallpaper2you_436554" />
+            android:src="@drawable/n" />
 
-        <!-- Toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/material_dynamic_primary30"
+            android:background="@color/material_dynamic_primary20"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:theme="?attr/actionBarTheme"
+            android:alpha="0.6"/>
 
         <!-- Título principal -->
         <TextView
@@ -54,17 +59,19 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvMessages"
-            android:layout_width="379dp"
-            android:layout_height="528dp"
+            android:layout_width="356dp"
+            android:layout_height="532dp"
             android:layout_gravity="center"
             android:layout_marginTop="60dp"
-            android:layout_marginBottom="90dp"
-            android:background="@color/cardview_shadow_start_color" />
+            android:layout_marginBottom="80dp"
+            android:background="@color/cardview_shadow_start_color"
+            android:backgroundTint="@color/material_dynamic_primary50"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutMessageInput"
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:textColor="@color/white"
             android:background="@android:color/white"
             android:padding="8dp"
             android:layout_gravity="bottom|center_horizontal">
@@ -75,6 +82,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Escribe un mensaje..."
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:padding="12dp"
                 android:background="@drawable/edittext_border"
                 app:layout_constraintTop_toTopOf="parent"
@@ -89,6 +98,8 @@
                 android:background="?android:attr/selectableItemBackground"
                 android:padding="12dp"
                 android:text="Enviar"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

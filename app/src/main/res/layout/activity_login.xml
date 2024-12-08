@@ -5,14 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
-    android:padding="16dp">
+    android:padding="5dp"
+    android:background="@color/black"
+    tools:context=".Login">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondo"
+        android:src="@drawable/neonex"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="16dp" />
 
@@ -20,14 +21,18 @@
         android:id="@+id/tv_title1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="176dp"
         android:gravity="center"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="25"
         android:text="Conecta Mobile"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,8 +41,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:shadowColor="@android:color/holo_blue_light"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="30"
         android:text="Iniciar Sesión"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,8 +59,10 @@
         android:layout_width="340dp"
         android:layout_height="85dp"
         android:layout_marginTop="24dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/material_dynamic_primary50"
         android:hint="Correo Electrónico"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:inputType="textEmailAddress"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,26 +74,29 @@
         android:layout_width="340dp"
         android:layout_height="85dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/material_dynamic_primary50"
         android:hint="Contraseña"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:inputType="textPassword"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_email" />
+
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="211dp"
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
-        android:backgroundTint="@color/material_dynamic_primary30"
+        android:backgroundTint="@color/material_dynamic_primary20"
         android:text="Iniciar Sesión"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_password" />
+        app:layout_constraintTop_toBottomOf="@id/et_password"
+        android:alpha="0.8"/>
 
     <TextView
         android:id="@+id/tv_Registro"
@@ -91,7 +105,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="¿No tienes una cuenta? Regístrate"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

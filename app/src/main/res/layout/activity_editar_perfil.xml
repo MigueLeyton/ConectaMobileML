@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".EditarPerfil"
-    android:background="@color/white">
+    android:padding="5dp"
+    android:background="@color/black"
+    tools:context=".EditarPerfil">
 
     <!-- Contenedor principal -->
     <FrameLayout
@@ -24,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/fondo_login"
+            android:src="@drawable/neonnn"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="80dp" />
 
@@ -33,9 +34,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/material_dynamic_primary30"
+            android:background="@color/material_dynamic_primary20"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:theme="?attr/actionBarTheme"
+            android:alpha="0.6"/>
 
         <!-- Barra de título centrado -->
         <TextView
@@ -55,53 +57,86 @@
         <EditText
             android:id="@+id/et_nombre"
             android:layout_width="match_parent"
-            android:layout_height="63dp"
+            android:layout_height="80dp"
             android:layout_marginTop="75dp"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/material_dynamic_primary50"
             android:hint="Nombre"
             android:inputType="text"
-            android:padding="12dp" />
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
         <EditText
             android:id="@+id/et_apellido"
             android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:layout_marginTop="140dp"
-            android:backgroundTint="@color/black"
+            android:layout_height="80dp"
+            android:layout_marginTop="155dp"
+            android:backgroundTint="@color/material_dynamic_primary50"
             android:hint="Apellido"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:inputType="text"
             android:padding="12dp" />
+
+        <!-- Botón de guardar cambios -->
 
         <EditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="200dp"
-            android:backgroundTint="@color/black"
+            android:layout_height="80dp"
+            android:layout_marginTop="235dp"
+            android:backgroundTint="@color/material_dynamic_primary50"
             android:hint="Correo Electrónico"
             android:inputType="textEmailAddress"
-            android:padding="12dp" />
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
-        <!-- Botón de guardar cambios -->
         <EditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
-            android:layout_height="66dp"
-            android:layout_marginTop="260dp"
-
-            android:backgroundTint="@color/black"
+            android:layout_height="80dp"
+            android:layout_marginTop="315dp"
+            android:backgroundTint="@color/material_dynamic_primary50"
             android:hint="Contraseña"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:inputType="textPassword"
             android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/et_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="390dp"
+            android:backgroundTint="@color/material_dynamic_primary50"
+            android:hint="Confirmar Contraseña"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginTop="500dp"
+            android:gravity="center"
+            android:text="¡Recuerda rellenar todos los campos!"
+            android:textColor="@color/white"
+            android:textSize="14sp"/>
 
         <Button
             android:id="@+id/btn_guardar_cambios"
             android:layout_width="177dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="300dp"
-            android:backgroundTint="@color/material_dynamic_primary30"
-            android:text="Guardar Cambios" />
+            android:layout_marginBottom="155dp"
+            android:backgroundTint="@color/material_dynamic_primary20"
+            android:alpha="0.8"
+            android:text="Guardar Cambios"
+            android:textColor="@color/white"/>
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

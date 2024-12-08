@@ -1,26 +1,25 @@
 package com.example.conectamobileml;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.auth.User;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Registrar extends AppCompatActivity {
 
-    private EditText etNombre, etApellido, etEmail, etPassword;
+    private EditText etNombre, etApellido, etEmail, etPassword, etConfirmPassword;
     private Button btnRegistro;
     private TextView tvLoginPrompt;
     private FirebaseAuth mAuth;
@@ -39,14 +38,15 @@ public class Registrar extends AppCompatActivity {
         etApellido = findViewById(R.id.et_apellido);
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
+        etConfirmPassword = findViewById(R.id.et_confirm_password); // Nuevo campo
         btnRegistro = findViewById(R.id.btn_Registro);
         tvLoginPrompt = findViewById(R.id.tv_login_prompt);
 
-        // Inicializar y configurar la Toolbar
+        // Inicializar Toolbar
         toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar); // Configurar Toolbar como ActionBar
+        setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Mostrar el botón de "atrás"
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle("");
         }
 
@@ -55,9 +55,20 @@ public class Registrar extends AppCompatActivity {
             String apellido = etApellido.getText().toString().trim();
             String email = etEmail.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
+            String confirmPassword = etConfirmPassword.getText().toString().trim();
 
-            if (nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            if (nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(Registrar.this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (!isValidPassword(password)) {
+                Toast.makeText(Registrar.this, "La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula, un número y un carácter especial.", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            if (!password.equals(confirmPassword)) {
+                Toast.makeText(Registrar.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -88,5 +99,23 @@ public class Registrar extends AppCompatActivity {
 
         tvLoginPrompt.setOnClickListener(v -> startActivity(new Intent(Registrar.this, Login.class)));
     }
-}
 
+    private boolean isValidPassword(String password) {
+        // La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula,
+        // un número y un carácter especial
+        return password.length() >= 8 &&
+                password.matches(".*[A-Z].*") &&
+                password.matches(".*[0-9].*") &&
+                password.matches(".*[@#$%^&+=!].*");
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            startActivity(new Intent(this, Login.class));
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}

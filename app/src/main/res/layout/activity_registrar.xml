@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="5dp"
+    android:background="@color/black"
     tools:context=".Registrar">
 
     <!-- Fondo de pantalla -->
@@ -13,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondo_login"
+        android:src="@drawable/neonnn"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="80dp" />
 
@@ -22,10 +23,12 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <!-- Título principal -->
         <androidx.appcompat.widget.Toolbar
@@ -34,7 +37,8 @@
             android:layout_height="wrap_content"
             android:background="@color/material_dynamic_primary30"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:theme="?attr/actionBarTheme"
+            android:alpha="0.6"/>
 
         <!-- Barra de título centrado -->
         <TextView
@@ -51,58 +55,70 @@
 
         <!-- Campos de entrada -->
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <EditText
             android:id="@+id/et_nombre"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="80dp"
             android:layout_marginTop="75dp"
-            android:backgroundTint="@color/black"
-
+            android:backgroundTint="@color/material_dynamic_primary50"
             android:hint="Nombre"
             android:inputType="textPersonName"
             android:padding="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
 
         <EditText
             android:id="@+id/et_apellido"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="140dp"
-            android:backgroundTint="@color/black"
+            android:layout_height="80dp"
+            android:layout_marginTop="155dp"
+            android:backgroundTint="@color/material_dynamic_primary50"
             android:hint="Apellido"
             android:inputType="textPersonName"
             android:padding="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_nombre" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
 
         <EditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="200dp"
-            android:backgroundTint="@color/black"
+            android:layout_height="80dp"
+            android:layout_marginTop="235dp"
+            android:backgroundTint="@color/material_dynamic_primary50"
             android:hint="Correo Electrónico"
             android:inputType="textEmailAddress"
             android:padding="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_apellido" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
 
         <EditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="275dp"
-            android:backgroundTint="@color/black"
+            android:layout_height="80dp"
+            android:layout_marginTop="315dp"
+            android:backgroundTint="@color/material_dynamic_primary50"
             android:hint="Contraseña"
             android:inputType="textPassword"
             android:padding="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_email" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
+
+        <EditText
+            android:id="@+id/et_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="395dp"
+            android:backgroundTint="@color/material_dynamic_primary50"
+            android:hint="Confirmar Contraseña"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
+
 
         <!-- Botón de registro -->
         <Button
@@ -110,19 +126,21 @@
             android:layout_width="149dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="250dp"
-            android:backgroundTint="@color/material_dynamic_primary30"
-            android:text="Registrar" />
+            android:layout_marginBottom="155dp"
+            android:backgroundTint="@color/material_dynamic_primary20"
+            android:alpha="0.8"
+            android:text="Registrar"
+            android:textColor="@color/white" />
 
         <!-- Enlace para login -->
         <TextView
             android:id="@+id/tv_login_prompt"
             android:layout_width="match_parent"
             android:layout_height="49dp"
-            android:layout_marginTop="350dp"
+            android:layout_marginTop="500dp"
             android:gravity="center"
             android:text="¿Ya tienes cuenta? Inicia sesión"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

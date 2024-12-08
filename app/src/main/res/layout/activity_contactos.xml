@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="5dp"
+    android:background="@color/black"
     tools:context=".Contactos">
 
         <!-- Fondo de pantalla -->
@@ -14,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/wallpaper2you_436554" />
+            android:src="@drawable/n" />
 
         <!-- Contenedor principal donde se ajustan los márgenes de las barras del sistema -->
         <FrameLayout
@@ -31,9 +32,10 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/material_dynamic_primary30"
+                    android:background="@color/material_dynamic_primary20"
                     android:minHeight="?attr/actionBarSize"
-                    android:theme="?attr/actionBarTheme" />
+                    android:theme="?attr/actionBarTheme"
+                    android:alpha="0.6"/>
 
                 <!-- Barra de búsqueda -->
                 <TextView
@@ -54,8 +56,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center_horizontal"
                     android:background="@color/cardview_shadow_start_color"
-                    android:layout_marginTop="70dp"
-                    android:queryHint="Buscar contactos" />
+                    android:backgroundTint="@color/material_dynamic_primary50"
+                    android:layout_marginTop="78dp"
+                    android:queryHint="Buscar contactos"
+                    android:textColor="@color/white"/>
 
                 <!-- RecyclerView donde se mostrarán los contactos -->
 
@@ -65,9 +69,14 @@
                     android:layout_width="344dp"
                     android:layout_height="385dp"
                     android:layout_gravity="center"
+                    android:backgroundTint="@color/material_dynamic_primary50"
                     android:layout_marginTop="60dp"
                     android:layout_marginBottom="90dp"
-                    android:background="@color/cardview_shadow_start_color" />
+                    android:textColor="@color/white"
+                    android:background="@color/cardview_shadow_start_color"
+                    android:padding="8dp"
+                    android:clipToPadding="false"
+                    android:scrollbars="vertical"/>
 
                 <Button
                     android:id="@+id/btn_add_contact"
@@ -75,8 +84,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="130dp"
-                    android:backgroundTint="@color/material_dynamic_primary30"
-                    android:text="Agregar Contacto" />
+                    android:backgroundTint="@color/material_dynamic_primary20"
+                    android:alpha="0.8"
+                    android:text="Agregar Contacto"
+                    android:textColor="@color/white"/>
 
         </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
