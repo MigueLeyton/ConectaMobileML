@@ -13,9 +13,14 @@ import java.util.List;
 public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.ContactViewHolder> {
 
     private List<User> userList;
+    private OnContactClickListener listener;
 
     public ContactosAdapter(List<User> userList) {
         this.userList = userList;
+    }
+
+    public void setOnContactClickListener(OnContactClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -32,6 +37,12 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
         holder.tvName.setText(user.getNombre());
         holder.tvLastName.setText(user.getApellido());
         holder.tvEmail.setText(user.getEmail());
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onContactClick(user); // Llama al método en el listener
+            }
+        });
     }
 
     @Override
@@ -49,5 +60,8 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
             tvEmail = itemView.findViewById(R.id.tv_email);
         }
     }
-}
 
+    public interface OnContactClickListener {
+        void onContactClick(User user);
+    }
+}

@@ -93,30 +93,32 @@
         app:layout_constraintTop_toBottomOf="@id/img_profile_picture" />
 
     <!-- Botón para chatear -->
+
     <Button
-        android:id="@+id/btn_chat"
+        android:id="@+id/btn_change_profile_picture"
         android:layout_width="211dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:text="Chatear"
-        android:backgroundTint="@color/black"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:alpha="0.6"
+        android:backgroundTint="@color/black"
+        android:text="Cambiar Foto"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/btn_ver_usuarios"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btn_ver_usuarios"
+        tools:layout_editor_absoluteY="501dp" />
 
     <!-- Botón para editar perfil -->
     <Button
         android:id="@+id/btn_editar_perfil"
         android:layout_width="211dp"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:text="Editar Perfil"
         android:backgroundTint="@color/black"
         android:alpha="0.6"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/btn_chat"
+        app:layout_constraintTop_toBottomOf="@id/btn_change_profile_picture"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -125,7 +127,7 @@
         android:id="@+id/btn_eliminar_perfil"
         android:layout_width="211dp"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:text="Eliminar Perfil"
         android:backgroundTint="@color/black"
         android:alpha="0.6"

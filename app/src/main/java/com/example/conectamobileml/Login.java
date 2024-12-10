@@ -44,8 +44,12 @@ public class Login extends AppCompatActivity {
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(Login.this, task -> {
                             if (task.isSuccessful()) {
-                                // Ingreso exitoso, redirige al perfil
+                                // Ingreso exitoso, obtén el userId
+                                String userId = mAuth.getCurrentUser().getUid(); // Obtener el UID del usuario autenticado
+
+                                // Redirige a la actividad de chat, pasando el userId
                                 Intent intent = new Intent(Login.this, Perfil.class);
+                                intent.putExtra("userId", userId);  // Pasar el userId a la actividad Chat
                                 startActivity(intent);
                                 finish(); // Finaliza esta actividad para que no regrese con el botón atrás
                             } else {
@@ -55,6 +59,7 @@ public class Login extends AppCompatActivity {
                         });
             }
         });
+
 
         // Redirigir a la actividad de registro
         tvRegistro.setOnClickListener(v -> startActivity(new Intent(Login.this, Registrar.class)));

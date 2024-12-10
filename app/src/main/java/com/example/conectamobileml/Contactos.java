@@ -1,5 +1,6 @@
 package com.example.conectamobileml;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -26,14 +27,13 @@ public class Contactos extends AppCompatActivity {
     private List<User> userList;
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
-    private Toolbar toolbar; // Declarar la Toolbar
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contactos);
 
-        // Log para verificar si el método onCreate se ejecuta correctamente
         Log.d("ContactosActivity", "onCreate: Activity started");
 
         // Inicializar Firebase y RecyclerView
@@ -46,55 +46,74 @@ public class Contactos extends AppCompatActivity {
         contactosAdapter = new ContactosAdapter(userList);
         rvContactos.setAdapter(contactosAdapter);
 
-        // Configurar Toolbar
-        toolbar = findViewById(R.id.toolbar); // Inicializar la Toolbar
-        setSupportActionBar(toolbar); // Configurar la Toolbar como ActionBar
+        // Configurar el evento de clic en un contacto
+        contactosAdapter.setOnContactClickListener(user -> {
+            if (user != null) {
+                Log.d("ContactosActivity", "UserId: " + user.getUserId() + " Nombre: " + user.getNombre() + " " + user.getApellido());
+
+                Intent intent = new Intent(Contactos.this, Chat.class);
+                // Pasar los datos con putExtra
+                intent.putExtra("userId", user.getUserId());
+                intent.putExtra("userName", user.getNombre() + " " + user.getApellido());
+                startActivity(intent);
+            } else {
+                Toast.makeText(Contactos.this, "Usuario no encontrado", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        // Configurar la toolbar
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Mostrar el botón de "atrás"
-            getSupportActionBar().setTitle(""); // Eliminar el título de la Toolbar
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("");
         }
 
-        // Ajustar paddings según las barras del sistema
+        // Ajustar el padding para las barras del sistema
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Log para verificar si se entra a la función loadUsersFromFirebase
-        Log.d("ContactosActivity", "onCreate: Calling loadUsersFromFirebase()");
-        // Cargar usuarios de Firebase
+        // Cargar los usuarios desde Firebase
         loadUsersFromFirebase();
     }
 
     private void loadUsersFromFirebase() {
-        // Obtener todos los usuarios de Firestore
         db.collection("users")
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     if (!queryDocumentSnapshots.isEmpty()) {
-                        // Limpiar lista antes de agregar nuevos usuarios
                         userList.clear();
                         for (com.google.firebase.firestore.QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                            User user = document.toObject(User.class);  // Convertir el documento Firestore a un objeto User
-                            userList.add(user);  // Agregar el usuario a la lista
+                            User user = document.toObject(User.class);
+
+                            // Log para verificar que los datos se están extrayendo correctamente
+                            Log.d("FirebaseData", "UserId: " + user.getUserId());
+                            Log.d("FirebaseData", "Nombre: " + user.getNombre());
+                            Log.d("FirebaseData", "Apellido: " + user.getApellido());
+
+                            userList.add(user);
                         }
-                        contactosAdapter.notifyDataSetChanged();  // Notificar al adaptador que los datos han cambiado
+                        contactosAdapter.notifyDataSetChanged();
                     } else {
                         Toast.makeText(Contactos.this, "No se encontraron usuarios", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(e -> {
-                    // Log para verificar el error
                     Log.e("FirebaseError", "Error al cargar usuarios: " + e.getMessage());
                     Toast.makeText(Contactos.this, "Error al cargar usuarios: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) { // Detectar clic en el botón de "atrás"
-            onBackPressed(); // Regresar a la actividad anterior
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
             return true;
         }
         return super.onOptionsItemSelected(item);
