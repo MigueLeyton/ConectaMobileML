@@ -28,7 +28,7 @@
             android:exported="false" />
         <activity
             android:name=".Contactos"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".Registrar"
             android:exported="false" />

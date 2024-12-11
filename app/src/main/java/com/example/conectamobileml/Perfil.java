@@ -18,6 +18,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -115,10 +116,12 @@ public class Perfil extends AppCompatActivity {
         StorageReference fileReference = storageReference.child(userId + ".jpg");
 
         fileReference.putFile(imageUri)
-                .addOnSuccessListener(taskSnapshot -> fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
-                    String downloadUrl = uri.toString();
-                    saveProfilePictureUrl(downloadUrl);
-                }))
+                .addOnSuccessListener(taskSnapshot -> fileReference.getDownloadUrl()
+                        .addOnSuccessListener(uri -> {
+                            String downloadUrl = uri.toString();
+                            saveProfilePictureUrl(downloadUrl);
+                        })
+                        .addOnFailureListener(e -> Toast.makeText(Perfil.this, "Error al obtener la URL: " + e.getMessage(), Toast.LENGTH_SHORT).show()))
                 .addOnFailureListener(e -> Toast.makeText(Perfil.this, "Error al subir la imagen: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
@@ -126,7 +129,10 @@ public class Perfil extends AppCompatActivity {
         String userId = mAuth.getCurrentUser().getUid();
 
         db.collection("users").document(userId).update("profilePictureUrl", url)
-                .addOnSuccessListener(aVoid -> Toast.makeText(Perfil.this, "Foto de perfil actualizada", Toast.LENGTH_SHORT).show())
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(Perfil.this, "Foto de perfil actualizada", Toast.LENGTH_SHORT).show();
+                    loadUserData();  // Recargar los datos del usuario después de la actualización
+                })
                 .addOnFailureListener(e -> Toast.makeText(Perfil.this, "Error al guardar URL: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
@@ -143,7 +149,11 @@ public class Perfil extends AppCompatActivity {
                         tvUsername.setText(nombre + " " + apellido);
 
                         if (profilePictureUrl != null && !profilePictureUrl.isEmpty()) {
-                            Glide.with(this).load(profilePictureUrl).into(imgProfilePicture);
+                            Glide.with(this)
+                                    .load(profilePictureUrl)
+                                    .diskCacheStrategy(DiskCacheStrategy.NONE)  // Evita el caché
+                                    .skipMemoryCache(true)  // Salta la memoria caché
+                                    .into(imgProfilePicture);
                         }
                     } else {
                         Toast.makeText(Perfil.this, "No se encontraron datos del usuario", Toast.LENGTH_SHORT).show();

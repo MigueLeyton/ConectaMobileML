@@ -57,7 +57,7 @@
                     android:layout_gravity="top|center_horizontal"
                     android:background="@color/cardview_shadow_start_color"
                     android:backgroundTint="@color/material_dynamic_primary50"
-                    android:layout_marginTop="78dp"
+                    android:layout_marginTop="79dp"
                     android:queryHint="Buscar contactos"
                     android:textColor="@color/white"/>
 
@@ -67,27 +67,16 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_Contactos"
                     android:layout_width="344dp"
-                    android:layout_height="385dp"
+                    android:layout_height="550dp"
                     android:layout_gravity="center"
-                    android:backgroundTint="@color/material_dynamic_primary50"
                     android:layout_marginTop="60dp"
-                    android:layout_marginBottom="90dp"
-                    android:textColor="@color/white"
+                    android:layout_marginBottom="20dp"
                     android:background="@color/cardview_shadow_start_color"
-                    android:padding="8dp"
+                    android:backgroundTint="@color/material_dynamic_primary50"
                     android:clipToPadding="false"
-                    android:scrollbars="vertical"/>
-
-                <Button
-                    android:id="@+id/btn_add_contact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:layout_marginBottom="130dp"
-                    android:backgroundTint="@color/material_dynamic_primary20"
-                    android:alpha="0.8"
-                    android:text="Agregar Contacto"
-                    android:textColor="@color/white"/>
+                    android:padding="8dp"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/white" />
 
         </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
