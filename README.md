@@ -4,8 +4,6 @@
 
 **ConectaMobileML** es una aplicación móvil Android desarrollada en **Android Studio** que permite a los usuarios registrarse, gestionar su perfil, conectarse con otros usuarios y enviar mensajes. Esta aplicación utiliza **Firebase** para el almacenamiento de datos y la autenticación, y permite almacenar fotos de perfil, realizar operaciones CRUD completas (Crear, Leer, Actualizar, Eliminar) sobre los datos del usuario, y buscar usuarios por su **nombre**, **apellido** y **correo electrónico**.
 
-En el futuro, se integrará un sistema de mensajería completo para que los usuarios puedan comunicarse entre sí de manera eficiente.
-
 ## 🌟 Características
 
 - **Autenticación con Firebase**: Login y registro de usuarios usando el sistema de autenticación de Firebase.
